@@ -254,6 +254,7 @@ extension TableViewMediator {
 ```
 
 Start & stop methods are public, so a controller can use them like:
+
 1. start loading - show loading indicator via the mediator
 2. handle loading completion - stop loading - hide loading indicator via the mediator
 
