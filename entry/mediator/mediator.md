@@ -1,14 +1,16 @@
 # Data View Mediator
 
-This article describes an approach to separate some routine code from view controllers
+This article describes an approach to separate some routine code from view controllers.
 
-If you work with `UITableView`, `UICollectionView` or so, we often have to write some routine code which repeats from controller to controller. It could be loading indicators, specific footers or supplementary views. The very common solution is to create a _base_ view controller, put such logic there and subclass it.
+Working with `UITableView` or `UICollectionView`, we often have to write some routine code which repeats from controller to controller. It could be loading indicators, specific footers or supplementary views. The very common solution is to create a _base_ view controller, put such logic there and subclass it.
 
-But what if we can avoid such composition? This article describes a possible solution. Just an approach, not a framework, because it's very project-specific.
+*** diagramm ***
+
+But what if we can avoid such inheritance? This article describes a possible solution. Just an approach, not a framework, because it's very project-specific.
 
 ## Mediator to the rescue!
 
-The main idea is creating a layer between view controller and table/collection view dataSource & delegate.
+The main idea is to create a layer between view controller and table/collection view dataSource & delegate.
 
 *** diagram ***
 
@@ -16,9 +18,9 @@ The main idea is creating a layer between view controller and table/collection v
 
 Let's take a view controllers with `UITableView`s. For example we'll implement a loading indicator for infinite scroll and add `UIRefreshControl` for data reloading.
 
-Apart from implementing `UITableViewDataSource` & `UITableViewDelegate` methods (see diagram) our controllers should be able:
-* to refresh loaded data if one uses `UIRefreshControl`
-* to load next page if one reaches a table's end while scrolling
+Apart from implementing `UITableViewDataSource` & `UITableViewDelegate` methods (see diagram) our controllers should be able to:
+* refresh loaded data if one uses `UIRefreshControl`
+* load next page if one reaches a table's end while scrolling
 
 So we put refresh/scroll handling to the mediator and it's absolutely doesn't matter what data we load, how we load, how it should be rendered and so on.
 
@@ -26,7 +28,7 @@ So we put refresh/scroll handling to the mediator and it's absolutely doesn't ma
 
 We'll do a very easy implementation to show the approach.
 
-The main part is proxying:
+The main part is **proxying**:
 * the mediator exposes its own protocols `TableViewMediatorDataSource` & `TableViewMediatorDelegate`
 * the mediator sets itself as a table `dataSource` & `delegate`
 * the mediator proxies every unhandled call from table protocols to its own protocols
