@@ -346,5 +346,5 @@ extension ViewController: TableViewMediatorDelegate {
 }
 ~~~
 
-*** link to example ***
+See full example [here](http://google.com).
 

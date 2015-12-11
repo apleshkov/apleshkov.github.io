@@ -5,8 +5,8 @@
     <description></description>
     <link>http://apleshkov.github.io/</link>
     <atom:link href="http://apleshkov.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 11 Dec 2015 16:46:14 +0300</pubDate>
-    <lastBuildDate>Fri, 11 Dec 2015 16:46:14 +0300</lastBuildDate>
+    <pubDate>Fri, 11 Dec 2015 16:48:07 +0300</pubDate>
+    <lastBuildDate>Fri, 11 Dec 2015 16:48:07 +0300</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -359,7 +359,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;em&gt;** link to example **&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;See full example &lt;a href=&quot;http://google.com&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 11 Dec 2015 16:06:43 +0300</pubDate>
