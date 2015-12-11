@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Data Mediator"
-date:   2015-12-11 16:06:43 +0300
-categories: arch swift
+tags: swift UITableView uicollectionview
 ---
 # Data View Mediator
 
@@ -10,7 +9,7 @@ This article describes an approach to separate some routine code from view contr
 
 Working with `UITableView` or `UICollectionView`, we often have to write some routine code which repeats from controller to controller. It could be loading indicators, specific footers or supplementary views. The very common solution is to create a _base_ view controller, put such logic there and subclass it.
 
-*** diagramm ***
+![d1](/assets/data-mediator/d1.png)
 
 But what if we can avoid such inheritance? This article describes a possible solution. Just an approach, not a framework, because it's very project-specific.
 
@@ -18,7 +17,7 @@ But what if we can avoid such inheritance? This article describes a possible sol
 
 The main idea is to create a layer between view controller and table/collection view dataSource & delegate.
 
-*** diagram ***
+![d2](/assets/data-mediator/d2.png)
 
 ## Example
 
@@ -346,5 +345,6 @@ extension ViewController: TableViewMediatorDelegate {
 }
 ~~~
 
-See full example [here](http://google.com).
+{{ site.url }}
 
+See full example {% include example.html path='mediator/DataViewMediator' name='here' %}
