@@ -42,7 +42,7 @@ The main part is **proxying**:
 
 ![d3](/assets/data-mediator/d3.png)
 
-~~~ swift
+{% highlight swift %}
 public class TableViewMediator: NSObject {
 
     private var tableView: UITableView!
@@ -70,11 +70,11 @@ public class TableViewMediator: NSObject {
     }
 
 }
-~~~
+{% endhighlight %}
 
 ### The mediator protocols
 
-~~~ swift
+{% highlight swift %}
 public protocol TableViewMediatorDataSource: UITableViewDataSource {
 }
 
@@ -85,13 +85,13 @@ public protocol TableViewMediatorDataSource: UITableViewDataSource {
     optional func tableView(tableView: UITableView, mediator: TableViewMediator, shouldLoadMore more: Bool) -> Bool
 
 }
-~~~
+{% endhighlight %}
 
 Both protocols are subclassed from corresponding `UITableView` protocols.
 
 ### Time to proxy
 
-~~~ swift
+{% highlight swift %}
 public class TableViewMediator: NSObject {
 
     ...
@@ -115,11 +115,11 @@ public class TableViewMediator: NSObject {
     }
 
 }
-~~~
+{% endhighlight %}
 
 ### Conforming the `UITableView` protocols
 
-~~~ swift
+{% highlight swift %}
 extension TableViewMediator: UITableViewDataSource {
 
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -132,27 +132,27 @@ extension TableViewMediator: UITableViewDataSource {
     }
 
 }
-~~~
+{% endhighlight %}
 
 Notice we add an additional property:
 
-~~~ swift
+{% highlight swift %}
 private(set) var loadingIndicatorSection: Int?
-~~~
+{% endhighlight %}
 
 The loading indicator cell:
 
-~~~ swift
+{% highlight swift %}
 private static let LoadingCellIdentifier = "MediatorLoadingCell"
 
 ...
 
 tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: TableViewMediator.LoadingCellIdentifier)
-~~~
+{% endhighlight %}
 
 Completing the data source:
 
-~~~ swift
+{% highlight swift %}
 extension TableViewMediator: UITableViewDataSource {
 
     ...
@@ -181,11 +181,11 @@ extension TableViewMediator: UITableViewDataSource {
     }
 
 }
-~~~
+{% endhighlight %}
 
 The loading indicator height:
 
-~~~ swift
+{% highlight swift %}
 extension TableViewMediator: UITableViewDelegate {
 
     public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -204,21 +204,21 @@ extension TableViewMediator: UITableViewDelegate {
     }
 
 }
-~~~
+{% endhighlight %}
 
 `shouldShowLoadingIndicator`:
 
-~~~ swift
+{% highlight swift %}
 private(set) var loadingState = false
 private var shouldShowLoadingIndicator: Bool {
     // don't show the loading indicator if the refresh control is in use
     return (loadingState || refreshControl?.refreshing == true)
 }
-~~~
+{% endhighlight %}
 
 Methods to set `loadingState` and `UIRefreshControl` handling:
 
-~~~ swift
+{% highlight swift %}
 extension TableViewMediator {
 
     private func tryLoadMore(more: Bool) -> Bool {
@@ -258,7 +258,7 @@ extension TableViewMediator {
     }
 
 }
-~~~
+{% endhighlight %}
 
 Start & stop methods are public, so a controller can use them like:
 
@@ -267,7 +267,7 @@ Start & stop methods are public, so a controller can use them like:
 
 Infinite scroll:
 
-~~~ swift
+{% highlight swift %}
 extension TableViewMediator: UITableViewDelegate {
 
     ...
@@ -288,13 +288,13 @@ extension TableViewMediator: UITableViewDelegate {
     }
 
 }
-~~~
+{% endhighlight %}
 
 ### Controller
 
 We got a simple mediator now! Let's write a controller:
 
-~~~ swift
+{% highlight swift %}
 class ViewController: UIViewController {
 
     private var tableView: UITableView!
@@ -341,6 +341,6 @@ extension ViewController: TableViewMediatorDelegate {
     }
 
 }
-~~~
+{% endhighlight %}
 
 See full example {% include example.html path='mediator/DataViewMediator' name='here' %}
