@@ -40,7 +40,7 @@ The main part is **proxying**:
 * the mediator sets itself as a table `dataSource` & `delegate`
 * the mediator proxies every unhandled call from table protocols to its own protocols
 
-*** diagram ***
+![d3](/assets/data-mediator/d3.png)
 
 ~~~ swift
 public class TableViewMediator: NSObject {
@@ -116,8 +116,6 @@ public class TableViewMediator: NSObject {
 
 }
 ~~~
-
-*** speed ***
 
 ### Conforming the `UITableView` protocols
 
@@ -344,7 +342,5 @@ extension ViewController: TableViewMediatorDelegate {
 
 }
 ~~~
-
-{{ site.url }}
 
 See full example {% include example.html path='mediator/DataViewMediator' name='here' %}
